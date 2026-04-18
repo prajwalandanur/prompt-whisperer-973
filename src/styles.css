@@ -1,0 +1,218 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap");
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * OneMeet design system — light theme.
+ *
+ * Palette:
+ *   Background       #FFFFFF
+ *   Surface soft     #F5F7FB
+ *   Navy primary     #11305B  (text, buttons, accents)
+ *   Navy hover       #1B447D
+ *   Navy deep        #0C2548
+ *   Text muted       #5B6B85
+ *   Border           #E5EAF2
+ *   Accent blue      #4F8EF7
+ */
+
+@theme inline {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Bricolage Grotesque", "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent-hover: var(--accent-hover);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+
+  --color-navy: var(--navy);
+  --color-navy-hover: var(--navy-hover);
+  --color-navy-deep: var(--navy-deep);
+  --color-surface-soft: var(--surface-soft);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.75rem;
+
+  /* Navy family */
+  --navy: oklch(0.301 0.082 256);            /* #11305B */
+  --navy-hover: oklch(0.396 0.087 254);      /* #1B447D */
+  --navy-deep: oklch(0.252 0.078 257);       /* #0C2548 */
+  --surface-soft: oklch(0.975 0.005 250);    /* #F5F7FB */
+
+  --background: oklch(1 0 0);                /* white */
+  --foreground: var(--navy);
+
+  --card: oklch(1 0 0);
+  --card-foreground: var(--navy);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--navy);
+
+  --primary: var(--navy);
+  --primary-foreground: oklch(1 0 0);
+  --accent: oklch(0.668 0.171 257);          /* #4F8EF7 */
+  --accent-foreground: oklch(1 0 0);
+  --accent-hover: oklch(0.728 0.158 256);
+
+  --secondary: var(--surface-soft);
+  --secondary-foreground: var(--navy);
+  --muted: var(--surface-soft);
+  --muted-foreground: oklch(0.48 0.025 256); /* #5B6B85 */
+
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(1 0 0);
+
+  --border: oklch(0.93 0.008 250);           /* #E5EAF2 */
+  --input: oklch(0.93 0.008 250);
+  --ring: var(--navy);
+
+  --chart-1: var(--navy);
+  --chart-2: oklch(0.668 0.171 257);
+  --chart-3: oklch(0.78 0.038 254);
+  --chart-4: var(--navy-hover);
+  --chart-5: oklch(0.48 0.025 256);
+
+  --sidebar: oklch(1 0 0);
+  --sidebar-foreground: var(--navy);
+  --sidebar-primary: var(--navy);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: var(--surface-soft);
+  --sidebar-accent-foreground: var(--navy);
+  --sidebar-border: oklch(0.93 0.008 250);
+  --sidebar-ring: var(--navy);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    letter-spacing: -0.015em;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--surface-soft);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: color-mix(in oklab, var(--navy) 35%, white);
+    border-radius: 999px;
+    border: 2px solid var(--surface-soft);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--navy);
+  }
+
+  *:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--navy) 25%, transparent);
+    color: var(--navy);
+  }
+}
+
+@layer utilities {
+  /* Frosted nav for white theme */
+  .frosted {
+    background-color: color-mix(in oklab, white 80%, transparent);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  /* Marquee for social proof ticker */
+  @keyframes om-marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-33.3333%); }
+  }
+
+  /* Shimmer sweep */
+  @keyframes om-shimmer {
+    0% { transform: translateX(-120%) skewX(-20deg); }
+    100% { transform: translateX(220%) skewX(-20deg); }
+  }
+  .shimmer-on-hover {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .shimmer-on-hover::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.35),
+      transparent
+    );
+    transform: translateX(-120%) skewX(-20deg);
+    pointer-events: none;
+  }
+  .shimmer-on-hover:hover::after {
+    animation: om-shimmer 0.9s ease-out;
+  }
+}
